@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "TestApp",
     "TestApp2",
+    "TestApp3",
     "TodoApp",
 ]
 
