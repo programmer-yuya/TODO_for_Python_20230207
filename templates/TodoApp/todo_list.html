@@ -1,0 +1,27 @@
+{% extends 'TodoApp/base.html' %} {% block header %}
+<h1>Todo管理</h1>
+<p>必要なタスクの管理を行います。</p>
+{% endblock header %} {% block content %}
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">タイトル</th>
+        <th scope="col">有効期限</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td>{{ task.title }}　</td>
+        <td>{{ task.validDate }}　</td>
+        <td>　<a href="{% url 'detail' task.pk %}">詳細</a></td>
+        <td>　<a href="{% url 'update' task.pk %}">編集</a></td>
+        <td>　<a href="{% url 'delete' task.pk %}">削除</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="{% url 'create' %}">新規作成</a>
+</div>
+{% endblock content %}
