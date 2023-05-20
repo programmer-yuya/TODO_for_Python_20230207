@@ -1,0 +1,7 @@
+{% extends "TodoApp/Header.html" %} {% block content_block %}
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+
+  <button type="submit">メッセージ生成</button>
+</form>
+{{ message }} {% endblock%}

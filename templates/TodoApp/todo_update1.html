@@ -1,0 +1,16 @@
+{% extends "TodoApp/Header.html" %} {%block content_block%}
+<h3>{% if not form.instance.pk %} 新規作成 {% else %} 修正 {% endif %}</h3>
+<form action="" method="POST">
+  {% csrf_token %}
+  <table class="table">
+    {{ form.as_p }}
+  </table>
+  <a
+    class="btn btn-outline-secondary"
+    href="{% url 'TodoApp:list' %}"
+    role="button"
+    >戻る</a
+  >
+  <input class="btn btn-success" type="submit" value="送信" />
+</form>
+{%endblock%}

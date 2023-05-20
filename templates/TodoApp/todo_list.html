@@ -1,0 +1,46 @@
+{% extends "TodoApp/Header.html" %} {% block content_block %}
+<h3>タスク一覧</h3>
+<table class="table" border="1">
+  <thead>
+    <tr>
+      <th>タスク</th>
+      <th>詳細</th>
+      <th>登録日</th>
+      <th>優先度</th>
+      <th>期限</th>
+      <th>完了フラグ</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todoItem in todoItems %}
+    <tr>
+      <td>{{ todoItem.title }}</td>
+      <td>{{ todoItem.detail }}</td>
+      <td>{{ todoItem.registeDate }}</td>
+      {% if todoItem.priority == '1' %}
+      <td>低</td>
+      {% elif todoItem.priority == '2' %}
+      <td>中</td>
+      {% elif todoItem.priority == '3' %}
+      <td>高</td>
+      {% endif %}
+      <td>{{ todoItem.validDate }}</td>
+      {% if todoItem.complete == True %}
+      <td>済</td>
+      {% else %}
+      <td>未</td>
+      {% endif %}
+
+      <td>
+        <a href="{% url 'TodoApp:update' pk=todoItem.id %}">修正</a>
+      </td>
+      <td>
+        <a href="{% url 'TodoApp:delete' pk=todoItem.id %}">削除</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

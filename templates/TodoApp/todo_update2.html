@@ -1,0 +1,12 @@
+{% extends "TodoApp/Header.html" %} {%block content_block%}
+<h3>{% if not form.instance.pk %} 新規作成 {% else %} 修正 {% endif %}</h3>
+<form action="" method="POST">
+  {% comment %} {% csrf_token %} {{ form.as_p }} {% endcomment %}
+  <table class="table">
+    {{ form.as_ul }}
+  </table>
+
+  <button type="submit" class="btn btn-primary">保存</button>
+</form>
+<br /><br />
+{% endblock %}
